@@ -29,7 +29,4 @@ public class Expense {
     private BigDecimal amount;
 
     private Date date;
-
-    private String dateString;
-
 }
