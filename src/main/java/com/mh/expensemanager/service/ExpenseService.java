@@ -20,7 +20,7 @@ public class ExpenseService {
 
     public List<ExpenseDTO> getAllExpenses() {
         List<Expense> entityExpenses = expenseRepository.findAll();
-        // it's a best practice to convert Entity Objects into DTO when you want to return them to clients
+        // it's a best practice to convert Entity Objects into DTOs when returning them to clients
         return entityExpenses.stream().map(this::convertExpenseToExpenseDTO).toList();
     }
 
