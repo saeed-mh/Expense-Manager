@@ -3,10 +3,12 @@ package com.mh.expensemanager.service;
 import com.mh.expensemanager.dto.ExpenseDTO;
 import com.mh.expensemanager.entity.Expense;
 import com.mh.expensemanager.repository.ExpenseRepository;
+import com.mh.expensemanager.util.DateTimeUtil;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +27,8 @@ public class ExpenseService {
     }
 
     private ExpenseDTO convertExpenseToExpenseDTO(Expense expense) {
-        return modelMapper.map(expense, ExpenseDTO.class);
+        ExpenseDTO expenseDTO = modelMapper.map(expense, ExpenseDTO.class);
+        expenseDTO.setDateString(DateTimeUtil.convertDateToString(expense.getDate()));
+        return expenseDTO;
     }
 }
